@@ -1,6 +1,13 @@
 <script setup>
+import {Link} from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/AppLayout.vue';
-import Welcome from '@/Components/Welcome.vue';
+
+defineProps({
+    pages: {
+        type: Array,
+        default: []
+    }
+})
 </script>
 
 <template>
@@ -13,8 +20,12 @@ import Welcome from '@/Components/Welcome.vue';
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-                    <Welcome />
+                <div class="text-gray-800 dark:text-white bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+                    <ul>
+                        <li v-for="page in pages">
+                            <Link :href="`/${page.slug}`">{{ page.id }}</Link>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
