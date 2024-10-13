@@ -1,8 +1,11 @@
 <script setup>
-import { Link, useForm } from '@inertiajs/vue3';
+import { Link, useForm, usePage } from '@inertiajs/vue3';
 import { computed, onMounted, reactive } from 'vue';
 import VueMarkdown from 'vue-markdown-render'
 import Highlight from './_internal/Highlight.vue'
+import { logout } from './_internal/Helpers';
+
+const page = usePage()
 
 const props = defineProps({
     edit: {
@@ -49,10 +52,10 @@ const renderJson = computed(() => JSON.parse(props.json))
         <header v-if="renderJson" class="bg-gray-900">
             <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 bg-gray-900 bg-opacity-109" aria-label="Global">
                 <div class="flex lg:flex-1">
-                    <a href="#" class="-m-1.5 p-1.5">
+                    <Link href="/" class="-m-1.5 p-1.5">
                         <span class="sr-only">Your Company</span>
-                        <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="">
-                    </a>
+                        <img class="h-8 w-auto" src="/media/stupidly-logo.png" alt="">
+                    </Link>
                 </div>
                 <div class="flex lg:hidden">
                     <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400">
@@ -66,7 +69,8 @@ const renderJson = computed(() => JSON.parse(props.json))
                     <Link v-for="link in renderJson.links.data" :href="link.href" class="text-sm font-semibold leading-6 text-white">{{ link.label }}</Link>
                 </div>
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a href="#" class="text-sm font-semibold leading-6 text-white">Log in <span aria-hidden="true">&rarr;</span></a>
+                    <Link v-if="!page.props.auth.user" href="/login" class="text-sm font-semibold leading-6 text-white">Log in</Link>
+                    <button v-else @click="logout" class="text-sm font-semibold leading-6 text-white">Log out</button>
                 </div>
             </nav>
         </header>

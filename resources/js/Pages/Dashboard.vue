@@ -23,7 +23,7 @@ defineProps({
                 <div class="text-gray-800 dark:text-white bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                     <ul>
                         <li v-for="page in pages">
-                            <Link :href="`/${page.slug}`">{{ page.id }}</Link>
+                            <Link :href="`/${page.slug}`">{{ page.title }}</Link>
                         </li>
                     </ul>
                 </div>
