@@ -31,6 +31,7 @@ class SassyInstall extends Command
      */
     public function handle()
     {
+        Artisan::call('key:generate');
         Artisan::call('migrate:fresh');
 
         $user = User::create([

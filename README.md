@@ -9,9 +9,17 @@ Sassy CMS had 2 guiding principles:
 
 ### Installattion
 
-Set up your .env file for APP_URL, DB_ etc.
+#### Vanilla Laravel
 
-php artisan sassy:install name email password  (<- replace these)
+Copy `.env.example` to `.env` and change settings for `APP_URL`, `DB_` etc.
 
-php artisan serve (or use Homestead, Herd, Sail, DDEV)
+`composer install`
+
+`php artisan sassy:install name email password`  (<- replace these 3)
+
+`npm install`
+
+`npm run build`
+
+`php artisan serve`
 
