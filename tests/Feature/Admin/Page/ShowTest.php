@@ -12,9 +12,8 @@ test('page show', function () {
     ]));
 
     $page = Page::factory()->create();
-    $block = Block::factory()->create();
     Section::factory(3)->create([
-        'block_id' => $block->getKey(),
+        'block' => 'Test',
         'page_id' => $page->getKey(),
         'json' => '{
             "name": "Test Component",

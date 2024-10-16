@@ -8,7 +8,7 @@ const props = defineProps({
         default: {}
     }
 })
-const Block = defineAsyncComponent(() => import(`../../../Blocks/${props.section.block.name}.vue`))
+const Block = defineAsyncComponent(() => import(`../../../Blocks/${props.section.block}.vue`))
 </script>
 
 <template>

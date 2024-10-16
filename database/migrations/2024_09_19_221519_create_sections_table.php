@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('block_id')->constrained();
+            $table->string('block');
             $table->foreignUuid('page_id')->constrained();
             $table->text('markdown')->nullable();
             $table->json('json')->nullable();

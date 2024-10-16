@@ -5,7 +5,8 @@ import { Link } from '@inertiajs/vue3';
 
 <template>
     <AdminLayout>
-        <ul>
+        <template #title>Admin</template>
+        <ul class="text-white">
             <li>
                 <Link href="/admin/blocks">Blocks</Link>
             </li>

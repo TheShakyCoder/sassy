@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\User;
 use App\Models\Page;
 use App\Models\Section;

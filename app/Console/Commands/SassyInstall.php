@@ -49,27 +49,10 @@ class SassyInstall extends Command
             'title' => 'Home Page'
         ]);
 
-        $block = Block::first();
-
         Section::create([
             'page_id' => $home->getKey(),
-            'block_id' => $block->getKey(),
-            'json' => '{
-                "name": "Test Component",
-                "links": {
-                    "control": "List",
-                    "data": [
-                        {
-                            "label": "Home",
-                            "href": ""
-                        },
-                        {
-                            "label": "Dashboard",
-                            "href": "dashboard"
-                        }
-                    ]
-                }
-            }'
+            'block' => 'Test',
+            'json' => config('sassy.json')
         ]);
     }
 }

@@ -23,7 +23,6 @@ test('a Page can be returned', function () {
                 ->has('sections', 2, fn(AssertableInertia $in) => $in
                     ->has('json')
                     ->has('markdown')
-                    ->has('block')
                     ->etc()
                 )
                 ->etc()

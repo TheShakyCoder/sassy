@@ -5,7 +5,7 @@ import { Link } from '@inertiajs/vue3';
 
 const props = defineProps({
     blocks: {
-        type: Object,
+        type: Array,
         default: {
             data: []
         }
@@ -17,7 +17,7 @@ const props = defineProps({
     <AdminLayout>
         <template #title>Blocks Index</template>
         <ul class="flex flex-col">
-            <li v-for="block in blocks.data" class=" ">
+            <li v-for="block in blocks" class=" ">
                 <div class="flex justify-between bg-gray-100 p-8">
 
                     <span>{{ block.name }}</span>

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Block;
+use App\Models\Page;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,8 @@ class SectionFactory extends Factory
     public function definition(): array
     {
         return [
-            'block_id' => Block::factory(),
+            'page_id' => Page::factory(),
+            'block' => 'Test',
             'json' => json_encode(['name' => 'Sharif'])
         ];
     }

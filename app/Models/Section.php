@@ -16,15 +16,10 @@ class Section extends Model
     ];
 
     protected $fillable = [
-        'block_id',
+        'block',
         'page_id',
         'json'
     ];
-
-    public function block()
-    {
-        return $this->belongsTo(Block::class);
-    }
 
     public function page()
     {

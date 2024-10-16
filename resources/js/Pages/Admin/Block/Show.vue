@@ -1,6 +1,6 @@
 <script setup>
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import AdminLayout from '@/Layouts/AdminLayout.vue';
+import AppLayout from '@/Layouts/AppLayout.vue';
 import { Link } from '@inertiajs/vue3';
 
 const props = defineProps({
@@ -14,7 +14,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <AdminLayout>
+    <AppLayout>
         <template #title>Block Details</template>
 
         <div class="flex flex-col space-y-8">
@@ -34,5 +34,5 @@ const props = defineProps({
                 </ul>
             </div>
         </div>
-    </AdminLayout>
+    </AppLayout>
 </template>

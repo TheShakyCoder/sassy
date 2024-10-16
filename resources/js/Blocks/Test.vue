@@ -1,11 +1,8 @@
 <script setup>
-import { Link, useForm, usePage } from '@inertiajs/vue3';
+import { Link, useForm } from '@inertiajs/vue3';
 import { computed, onMounted, reactive } from 'vue';
 import VueMarkdown from 'vue-markdown-render'
 import Highlight from './_internal/Highlight.vue'
-import { logout } from './_internal/Helpers';
-
-const page = usePage()
 
 const props = defineProps({
     edit: {
@@ -69,8 +66,7 @@ const renderJson = computed(() => JSON.parse(props.json))
                     <Link v-for="link in renderJson.links.data" :href="link.href" class="text-sm font-semibold leading-6 text-white">{{ link.label }}</Link>
                 </div>
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <Link v-if="!page.props.auth.user" href="/login" class="text-sm font-semibold leading-6 text-white">Log in</Link>
-                    <button v-else @click="logout" class="text-sm font-semibold leading-6 text-white">Log out</button>
+                    <a href="#" class="text-sm font-semibold leading-6 text-white">Log in <span aria-hidden="true">&rarr;</span></a>
                 </div>
             </nav>
         </header>

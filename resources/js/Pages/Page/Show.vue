@@ -15,7 +15,7 @@ defineProps({
     <div class="w-full h-full bg-red-100">
         <div v-for="section in page.sections">
             <component
-                :is="defineAsyncComponent(() => import(`../../Blocks/${section.block.name}.vue`))"
+                :is="defineAsyncComponent(() => import(`../../Blocks/${section.block}.vue`))"
                 :json="section.json"
                 :sectionId="section.id"
             ></component>

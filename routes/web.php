@@ -29,7 +29,7 @@ Route::middleware([
 
         Route::get('/blocks', function() {
             return Inertia::render('Admin/Block/Index', [
-                'blocks' => Block::query()->paginate(10)
+                'blocks' => config('sassy.blocks')
             ]);
         });
 
@@ -43,13 +43,20 @@ Route::middleware([
             return Inertia::render('Admin/Page/Index', [
                 'pages' => Page::query()->paginate(10)
             ]);
+        })->name('pages.index');
+
+        Route::post('/pages', function(Request $request) {
+            $page = Page::create($request->all());
+
+            return redirect()->route('admin.pages.show', $page);
         });
 
         Route::get('/pages/{page}', function(Page $page) {
             return Inertia::render('Admin/Page/Show', [
-                'page' => $page->load(['sections.block'])
+                'page' => $page->load(['sections']),
+                'blocks' => collect(config('sassy.blocks'))
             ]);
-        });
+        })->name('pages.show');
 
         Route::get('/pages/{page}/edit', function(Page $page) {
             return Inertia::render('Admin/Page/Edit', [
@@ -57,9 +64,17 @@ Route::middleware([
             ]);
         });
 
+        Route::post('/sections', function(Request $request) {
+            Section::create([
+                ...$request->all(),
+                'json' => config('sassy.blocks')[$request->get('block')]
+            ]);
+            return redirect()->back();
+        })->name('sections.store');
+
         Route::get('/sections/{section}/edit', function(Section $section) {
             return Inertia::render('Admin/Section/Edit', [
-                'section' => $section->load(['page', 'block'])
+                'section' => $section->load(['page'])
             ]);
         });
 
@@ -71,21 +86,14 @@ Route::middleware([
 });
 
 Route::get('/', function () {
-    // return Inertia::render('Welcome', [
-    //     'canLogin' => Route::has('login'),
-    //     'canRegister' => Route::has('register'),
-    //     'laravelVersion' => Application::VERSION,
-    //     'phpVersion' => PHP_VERSION,
-    //     'pages' => Page::query()->get()
-    // ]);
     return Inertia::render('Page/Show', [
-        'page' => Page::where('slug', '')->with(['sections.block'])->first()
+        'page' => Page::where('slug', '')->with(['sections'])->first()
     ]);
 })->name('home');
 
 Route::get('/{page:slug}', function (Page $page) {
     return Inertia::render('Page/Show', [
-        'page' => $page->load(['sections.block'])
+        'page' => $page->load(['sections'])
     ]);
 });
 
