@@ -21,7 +21,7 @@ const props = defineProps({
     json: {
         type: String,
         default: {
-            "name": "Test Component",
+            "name": "T2 Component",
             "links": {
                 "control": "List",
                 "data": [
@@ -39,7 +39,7 @@ const props = defineProps({
     }
 })
 
-const blockName = '{name}'
+const blockName = 'T2'
 const renderJson = computed(() => JSON.parse(props.json))
 </script>
 
@@ -52,7 +52,7 @@ const renderJson = computed(() => JSON.parse(props.json))
                 <div class="flex lg:flex-1">
                     <Link href="/" class="-m-1.5 p-1.5">
                         <span class="sr-only">Your Company</span>
-                        <img class="h-8 w-auto" src="/media/stupidly-logo.png" alt="">
+                        <img class="h-8 w-auto" src="/media/sassy.png" alt="">
                     </Link>
                 </div>
                 <div class="flex lg:hidden">
