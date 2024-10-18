@@ -2,7 +2,7 @@
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import SectionModal from '@/Modals/SectionModal.vue';
-import { Link, useForm } from '@inertiajs/vue3';
+import { Link, useForm, router } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 const showModal = ref(false)
@@ -19,6 +19,11 @@ const props = defineProps({
         default: {}
     }
 })
+
+const deleteSection = (id) => {
+    if(confirm('Delete Block?'))
+        return router.delete('/admin/sections/'+id)
+}
 
 const form = useForm({
     block: null,
@@ -52,13 +57,15 @@ const close = () => {
                 <ul class="flex flex-col space-y-4">
                     <li v-for="section in page.sections" class="flex justify-between p-4 bg-white w-full">
                         <span>{{ section.block }}</span>
-                        <Link :href="`/admin/sections/${section.id}/edit`">edit</Link>
+                        <div class="flex flex-row space-x-4">
+                            <Link :href="`/admin/sections/${section.id}/edit`">edit</Link>
+                            <button @click="deleteSection(section.id)">delete</button>
+                        </div>
                     </li>
                 </ul>
                 <button @click="showModal = true">Add Block</button>
             </div>
         </div>
-
 
         <SectionModal
             :open="showModal"

@@ -80,6 +80,9 @@ Route::middleware([
             $section->json = $request->get('json');
             $section->save();
         });
+        Route::delete('/sections/{section}', function(Section $section) {
+            $section->delete();
+        });
     });
 });
 

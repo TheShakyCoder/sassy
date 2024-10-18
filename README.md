@@ -1,6 +1,6 @@
 # Stupidly Sassy
 
-Version 0.1.6
+Version 0.1.7
 
 ## A CMS for developers
 
@@ -58,6 +58,10 @@ Copy the object and paste it into the 'blocks' section of config/sassy.php using
 To prevent errors, make sure the props only use double quotes and that both the keys and values are quoted.
 
 ### Log
+
+#### v0.1.7
+
+1. Section delete test
 
 #### v0.1.6
 
