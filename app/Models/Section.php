@@ -18,6 +18,7 @@ class Section extends Model
     protected $fillable = [
         'block',
         'page_id',
+        'posts',
         'json'
     ];
 

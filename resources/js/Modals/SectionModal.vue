@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { CheckIcon } from '@heroicons/vue/24/outline'
+import Toggle from '../Components/Toggle.vue'
 
 const props = defineProps({
     form: {
@@ -42,7 +43,7 @@ const title = 'Add Block'
                     <DialogTitle as="h3" class="text-base font-semibold leading-6 text-gray-900">{{ title }}</DialogTitle>
                     <div class="mt-2">
 
-                        <form>
+                        <form class="space-y-4">
 
                             <div>
                                 <label for="block" class="text-left block text-sm font-medium leading-6 text-gray-900">Block</label>
@@ -51,6 +52,14 @@ const title = 'Add Block'
                                 </select>
                             </div>
 
+                            <div>
+                                <label for="posts" class="text-left block text-sm font-medium leading-6 text-gray-900">Posts</label>
+                                <select v-model="form.posts" id="posts" name="posts" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <option value="0">None</option>
+                                    <option value="3">3</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
 
                         </form>
 

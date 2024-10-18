@@ -3,6 +3,7 @@
 use App\Http\Middleware\IsAdmin;
 use App\Models\Block;
 use App\Models\Page;
+use App\Models\Post;
 use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
@@ -78,22 +79,37 @@ Route::middleware([
 
         Route::patch('/sections/{section}', function(Section $section, Request $request) {
             $section->json = $request->get('json');
+            $section->posts = $request->get('posts');
             $section->save();
+            return redirect()->back();
         });
         Route::delete('/sections/{section}', function(Section $section) {
             $section->delete();
+            return redirect()->back();
         });
     });
 });
 
 Route::get('/', function () {
+    $page = Page::where('slug', '')->with(['sections'])->first();
+    foreach($page->sections as $section) {
+        if($section->posts > 0)
+           $section->section_posts = Post::query()->paginate($section->posts);
+    }
+
     return Inertia::render('Page/Show', [
-        'page' => Page::where('slug', '')->with(['sections'])->first()
+        'page' => $page
     ]);
 })->name('home');
 
 Route::get('/{page:slug}', function (Page $page) {
+    $page->load(['sections']);
+    $page->sections->each(function($section) {
+         if($section->posts > 0)
+            $section->section_posts = Post::query()->paginate($section->posts);
+    });
+
     return Inertia::render('Page/Show', [
-        'page' => $page->load(['sections'])
+        'page' => $page
     ]);
 });

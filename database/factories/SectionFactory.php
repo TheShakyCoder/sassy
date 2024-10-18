@@ -21,6 +21,7 @@ class SectionFactory extends Factory
         return [
             'page_id' => Page::factory(),
             'block' => 'Test',
+            'posts' => 0,
             'json' => json_encode(['name' => 'Sharif'])
         ];
     }

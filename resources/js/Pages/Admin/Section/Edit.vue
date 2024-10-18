@@ -15,8 +15,8 @@ const Block = defineAsyncComponent(() => import(`../../../Blocks/${props.section
     <AdminLayout>
         <Block
             :edit="true"
+            :section="section"
             :json="section.json"
-            :sectionId="section.id"
         >
         </Block>
     </AdminLayout>

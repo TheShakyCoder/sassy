@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sections', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('block');
-            $table->foreignUuid('page_id')->constrained();
-            $table->text('markdown')->nullable();
-            $table->json('json')->nullable();
-            $table->integer('posts')->default(0);
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sections');
+        Schema::dropIfExists('posts');
     }
 };

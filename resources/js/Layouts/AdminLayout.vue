@@ -10,7 +10,6 @@ const showMenu = ref(false)
 const navigation = [
   { name: 'Admin', href: '/admin', current: true },
   { name: 'Pages', href: '/admin/pages', current: false },
-  { name: 'Blocks', href: '/admin/blocks', current: false },
   { name: 'Posts', href: '/admin/posts', current: false },
 ]
 const userNavigation = [
@@ -80,12 +79,12 @@ const userNavigation = [
         </div>
     </nav>
 
-  <header class="bg-white shadow">
+  <header class=" shadow">
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <h1 class="text-3xl font-bold tracking-tight text-gray-900"><slot name="title"></slot></h1>
     </div>
   </header>
-  <main>
+  <main class="">
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <slot></slot>
     </div>

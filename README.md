@@ -1,6 +1,6 @@
 # Stupidly Sassy
 
-Version 0.1.7
+Version 0.1.8
 
 ## A CMS for developers
 
@@ -58,6 +58,12 @@ Copy the object and paste it into the 'blocks' section of config/sassy.php using
 To prevent errors, make sure the props only use double quotes and that both the keys and values are quoted.
 
 ### Log
+
+#### v0.1.8
+
+1. Remove Block menu in admin
+2. Add Posts to admin Section
+3. Add Posts to front end Sections
 
 #### v0.1.7
 

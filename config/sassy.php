@@ -2,7 +2,7 @@
 
 return [
     'json' => '{
-        "name": "Test Component",
+        "name": "Tests",
         "links": {
             "control": "List",
             "data": [
@@ -17,22 +17,5 @@ return [
             ]
         }
     }',
-    'blocks' => [
-        'Test' => '{
-            "name": "Test Component",
-            "links": {
-                "control": "List",
-                "data": [
-                    {
-                        "label": "HOME",
-                        "href": "/"
-                    },
-                    {
-                        "label": "ADMIN",
-                        "href": "/admin"
-                    }
-                ]
-            }
-        }',
-    ]
+    'blocks' => []
 ];

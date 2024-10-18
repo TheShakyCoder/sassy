@@ -10,9 +10,9 @@ const props = defineProps({
         type: Boolean,
         default: false
     },
-    sectionId: {
-        type: String,
-        default: ''
+    section: {
+        type: Object,
+        default: {}
     },
     markdown: {
         type: String,
@@ -21,7 +21,7 @@ const props = defineProps({
     json: {
         type: String,
         default: {
-            "name": "Test Component",
+            "name": "Test",
             "links": {
                 "control": "List",
                 "data": [
@@ -40,10 +40,11 @@ const props = defineProps({
 })
 
 const renderJson = computed(() => JSON.parse(props.json))
+const posts = computed(() => props.section.section_posts ? props.section.section_posts.data : [])
 </script>
 
 <template>
-    <Highlight :edit="edit" :section-id="sectionId" :json="json">
+    <Highlight :edit="edit" :section="section" :json="json">
 
         <!-- EDITABLE AREA -->
         <header v-if="renderJson" class="bg-gray-900">
@@ -72,9 +73,15 @@ const renderJson = computed(() => JSON.parse(props.json))
             </nav>
         </header>
 
+        <ul>
+            <li v-for="post in posts">{{ post }}</li>
+        </ul>
+
+        <!-- <vue-markdown :source="props.markdown" /> -->
+        <!-- EDITABLE AREA -->
+
     </Highlight>
 
-    <!-- <vue-markdown :source="props.markdown" /> -->
 </template>
 
 <style scoped>

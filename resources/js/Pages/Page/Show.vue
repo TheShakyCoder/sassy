@@ -17,7 +17,7 @@ defineProps({
             <component
                 :is="defineAsyncComponent(() => import(`../../Blocks/${section.block}.vue`))"
                 :json="section.json"
-                :sectionId="section.id"
+                :section="section"
             ></component>
         </div>
     </div>
