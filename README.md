@@ -56,3 +56,9 @@ Copy the object and paste it into the 'blocks' section of config/sassy.php using
 #### IMPORTANT!
 
 To prevent errors, make sure the props only use double quotes and that both the keys and values are quoted.
+
+### Log
+
+#### v0.1.5
+
+1. Removed T2 block

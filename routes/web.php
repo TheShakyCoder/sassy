@@ -23,9 +23,7 @@ Route::middleware([
 
     Route::prefix('admin')->name('admin.')->middleware(IsAdmin::class)->group(function() {
 
-        Route::get('/', function() {
-            return Inertia::render('Admin/Index');
-        })->name('index');
+        Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('index');
 
         Route::get('/blocks', function() {
             return Inertia::render('Admin/Block/Index', [
@@ -96,13 +94,3 @@ Route::get('/{page:slug}', function (Page $page) {
         'page' => $page->load(['sections'])
     ]);
 });
-
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//         'pages' => Page::query()->get()
-//     ]);
-// })->name('home');

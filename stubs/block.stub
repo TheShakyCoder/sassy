@@ -21,7 +21,7 @@ const props = defineProps({
     json: {
         type: String,
         default: {
-            "name": "Test Component",
+            "name": "{name}",
             "links": {
                 "control": "List",
                 "data": [
@@ -39,7 +39,6 @@ const props = defineProps({
     }
 })
 
-const blockName = '{name}'
 const renderJson = computed(() => JSON.parse(props.json))
 </script>
 
